@@ -14,7 +14,7 @@
         <h1 class="title">
           SCORE CARD 
         </h1>
-        <b-table :data="data" :columns="columns"></b-table>
+        <b-table :bordered="isBordered" :data="data" :columns="columns"></b-table>
       </div>
       <div class="column ml-5">
         <h1 class="title">
@@ -154,22 +154,23 @@ export default {
           hourStart: 0,
           education: "Academic degree",
           rating:2, 
+          isBordered: true,
           data: [
               { 'characteristic': 'AMT_INCOME_TOTAL', 'attribute': '<180000', 'scaledWBP': '-1' },
-              { '-': '-', 'attribute': '180000-220000', 'scaledWBP': '2' },
+              { '-': '-', 'attribute': '180000 - 220000', 'scaledWBP': '2' },
               { '-': '-', 'attribute': '>220000', 'scaledWBP': '6' },
 
               { 'characteristic': 'APARTMENTS_AVG', 'attribute': '<0.015','scaledWBP': '-2' },
-              { '-': 'APARTMENTS_AVG', 'attribute': '0.015-0.075', 'scaledWBP': '0' },
+              { '-': 'APARTMENTS_AVG', 'attribute': '0.015 - 0.075', 'scaledWBP': '0' },
               { '-': 'APARTMENTS_AVG', 'attribute': '>0.075', 'scaledWBP': '4' },
 
               { 'characteristic': 'DAYS_ID_PUBLISH', 'attribute': '<800','scaledWBP': '-3' },
-              { '-': 'DAYS_ID_PUBLISH', 'attribute': '800-1500', 'scaledWBP': '-1' },
+              { '-': 'DAYS_ID_PUBLISH', 'attribute': '800 - 1500', 'scaledWBP': '-1' },
               { '-': 'DAYS_ID_PUBLISH', 'attribute': '>1500', 'scaledWBP': '3' },
 
-              { 'characteristic': 'DAYS_LAST_PHONE_CHANGE', 'attribute': '<800','scaledWBP': '-3' },
-              { '-': 'DAYS_LAST_PHONE_CHANGE', 'attribute': '800-1500', 'scaledWBP': '0' },
-              { '-': 'DAYS_LAST_PHONE_CHANGE', 'attribute': '>1500', 'scaledWBP': '4' },  
+              { 'characteristic': 'DAYS_LAST_PHONE_CHANGE', 'attribute': '<50','scaledWBP': '-3' },
+              { '-': 'DAYS_LAST_PHONE_CHANGE', 'attribute': '50 - 1150', 'scaledWBP': '0' },
+              { '-': 'DAYS_LAST_PHONE_CHANGE', 'attribute': '>1150', 'scaledWBP': '4' },  
 
               { 'characteristic': 'EXT_SOURCE_1', 'attribute': '<0.14','scaledWBP': '-13' },
               { '-': 'EXT_SOURCE_1', 'attribute': '0.14-0.29', 'scaledWBP': '-1' },

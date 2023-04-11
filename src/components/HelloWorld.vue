@@ -9,6 +9,7 @@
     <h1 class="title">
       <p>Result:</p> 
       <p id="status" style="font-size: 50px; margin-top: 20px;"> {{ status }} </p>
+      &nbsp;
     </h1>
     <div class="columns">
       <div class="column mr-5">
@@ -97,22 +98,22 @@
           <b-radio v-model="education"
               name="name"
               native-value=1>
-              Higher education
-          </b-radio>
-          <b-radio v-model="education"
-              name="name"
-              native-value=2>
-              Incomplete higher
-          </b-radio>
-          <b-radio v-model="education"
-              name="name"
-              native-value=3>
               Lower secondary
           </b-radio>
           <b-radio v-model="education"
               name="name"
-              native-value=4>
+              native-value=2>
               Secondary / secondary special
+          </b-radio>
+          <b-radio v-model="education"
+              name="name"
+              native-value=3>
+              Incomplete higher
+          </b-radio>
+          <b-radio v-model="education"
+              name="name"
+              native-value=4>
+              Higher education
           </b-radio>
           <b-radio v-model="education"
               name="name"
@@ -227,8 +228,8 @@ export default {
       //final
       let statusClass = document.getElementById('status');
       statusClass.className = '';
-      this.status = this.points > this.cutoffScore ? "LIKELY NON-DEFAULTER" : "LIKELY DEFAULTER";
-      this.points > this.cutoffScore ? statusClass.classList.add('has-text-success') : statusClass.classList.add('has-text-danger');
+      this.status = this.points >= this.cutoffScore ? "LIKELY NON-DEFAULTER" : "LIKELY DEFAULTER";
+      this.points >= this.cutoffScore ? statusClass.classList.add('has-text-success') : statusClass.classList.add('has-text-danger');
 
       window.scrollTo(0, 0);
     }
@@ -250,7 +251,7 @@ export default {
           rating: 2, 
           isBordered: true,
           data: [
-              { 'characteristic': 'AMT_INCOME_TOTAL', 'attribute': '<180000', 'scaledWBP': -1 },
+              { 'characteristic': 'AMT_INCOME_TOTAL', 'attribute': '<180000', 'scaledWBP': -2 },
               { '-': '-', 'attribute': '180000 - 220000', 'scaledWBP': 2 },
               { '-': '-', 'attribute': '>220000', 'scaledWBP': 6 },
 
@@ -258,7 +259,7 @@ export default {
               { '-': 'APARTMENTS_AVG', 'attribute': '0.015 - 0.075', 'scaledWBP': 0 },
               { '-': 'APARTMENTS_AVG', 'attribute': '>0.075', 'scaledWBP': 4 },
 
-              { 'characteristic': 'DAYS_ID_PUBLISH', 'attribute': '<800','scaledWBP': -3 },
+              { 'characteristic': 'DAYS_ID_PUBLISH', 'attribute': '<800','scaledWBP': -4 },
               { '-': 'DAYS_ID_PUBLISH', 'attribute': '800 - 1500', 'scaledWBP': -1 },
               { '-': 'DAYS_ID_PUBLISH', 'attribute': '>1500', 'scaledWBP': 3 },
 
@@ -266,32 +267,32 @@ export default {
               { '-': 'DAYS_LAST_PHONE_CHANGE', 'attribute': '50 - 1150', 'scaledWBP': 0 },
               { '-': 'DAYS_LAST_PHONE_CHANGE', 'attribute': '>1150', 'scaledWBP': 4 },  
 
-              { 'characteristic': 'EXT_SOURCE_1', 'attribute': '<0.14','scaledWBP': -13 },
+              { 'characteristic': 'EXT_SOURCE_1', 'attribute': '<0.14','scaledWBP': -12 },
               { '-': 'EXT_SOURCE_1', 'attribute': '0.14-0.29', 'scaledWBP': -1 },
-              { '-': 'EXT_SOURCE_1', 'attribute': '>0.29', 'scaledWBP': 12 },      
+              { '-': 'EXT_SOURCE_1', 'attribute': '>0.29', 'scaledWBP': 10 },      
               
-              { 'characteristic': 'EXT_SOURCE_2', 'attribute': '<0.18','scaledWBP': -16 },
+              { 'characteristic': 'EXT_SOURCE_2', 'attribute': '<0.18','scaledWBP': -17 },
               { '-': 'EXT_SOURCE_2', 'attribute': '0.18-0.38', 'scaledWBP': -4 },
-              { '-': 'EXT_SOURCE_2', 'attribute': '0.38-0.6', 'scaledWBP': 3 },
-              { '-': 'EXT_SOURCE_2', 'attribute': '>0.6', 'scaledWBP': 15 },       
+              { '-': 'EXT_SOURCE_2', 'attribute': '0.38-0.6', 'scaledWBP': 4 },
+              { '-': 'EXT_SOURCE_2', 'attribute': '>0.6', 'scaledWBP': 16 },       
 
-              { 'characteristic': 'EXT_SOURCE_3', 'attribute': '<0.14','scaledWBP': -29 },
-              { '-': 'EXT_SOURCE_3', 'attribute': '0.14-0.24', 'scaledWBP': -16 },
+              { 'characteristic': 'EXT_SOURCE_3', 'attribute': '<0.14','scaledWBP': -28 },
+              { '-': 'EXT_SOURCE_3', 'attribute': '0.14-0.24', 'scaledWBP': -15 },
               { '-': 'EXT_SOURCE_3', 'attribute': '0.24-0.48', 'scaledWBP': 3 },
               { '-': 'EXT_SOURCE_3', 'attribute': '>0.48', 'scaledWBP': 21 }, 
               
-              { 'characteristic': 'FLAG_DOCUMENT_3', 'attribute': 'Not Provided','scaledWBP': 6 },
+              { 'characteristic': 'FLAG_DOCUMENT_3', 'attribute': 'Not Provided','scaledWBP': 5 },
               { '-': 'FLAG_DOCUMENT_3', 'attribute': 'Provided', 'scaledWBP': -3 },
             
-              { 'characteristic': 'NAME_EDUCATION_TYPE', 'attribute': 'Higher education','scaledWBP': -12 },
-              { '-': 'NAME_EDUCATION_TYPE', 'attribute': 'Incomplete higher', 'scaledWBP': -5 },
-              { '-': 'NAME_EDUCATION_TYPE', 'attribute': 'Lower secondary', 'scaledWBP': 10 },
-              { '-': 'NAME_EDUCATION_TYPE', 'attribute': 'Secondary / secondary special', 'scaledWBP': 10 },
-              { '-': 'NAME_EDUCATION_TYPE', 'attribute': 'Academic degree', 'scaledWBP': 10 },             
+              { 'characteristic': 'NAME_EDUCATION_TYPE', 'attribute': 'Lower secondary','scaledWBP': -15 },
+              { '-': 'NAME_EDUCATION_TYPE', 'attribute': 'Secondary / secondary special', 'scaledWBP': -6 },
+              { '-': 'NAME_EDUCATION_TYPE', 'attribute': 'Incomplete higher', 'scaledWBP': 12 },
+              { '-': 'NAME_EDUCATION_TYPE', 'attribute': 'Higher education', 'scaledWBP': 12 },
+              { '-': 'NAME_EDUCATION_TYPE', 'attribute': 'Academic degree', 'scaledWBP': 12 },             
 
-              { 'characteristic': 'REGION_RATING_CLIENT_W_CITY', 'attribute': '1','scaledWBP': 2 },
+              { 'characteristic': 'REGION_RATING_CLIENT_W_CITY', 'attribute': '1','scaledWBP': 4 },
               { '-': 'REGION_RATING_CLIENT_W_CITY', 'attribute': '2', 'scaledWBP': 0 },
-              { '-': 'REGION_RATING_CLIENT_W_CITY', 'attribute': '3', 'scaledWBP': -2 },
+              { '-': 'REGION_RATING_CLIENT_W_CITY', 'attribute': '3', 'scaledWBP': -4 },
           ],
           columns: [
               {
